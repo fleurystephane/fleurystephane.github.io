@@ -1,4 +1,12 @@
-name: Project Name
-title: Baked with Awestruct
-org: Organization
+name: Blog de Stéphane Fleury
+title: Blog de Stéphane Fleury
+org: Stéphane Fleury
 base_url: ''
+
+profiles:
+  production:
+    base_url: http://fleurystephane.github.io/
+    deploy:
+      host: github_pages
+      # use master branch for <username>.github.io repository
+      branch: master
