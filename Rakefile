@@ -10,7 +10,7 @@ task :travis do
   end
 
   repo = %x(git config remote.origin.url).gsub(/^git:/, 'https:')
-  deploy_branch = 'gh-pages'
+  deploy_branch = 'master'
   if repo.match(/github\.com\.git$/)
     deploy_branch = 'master'
   end
