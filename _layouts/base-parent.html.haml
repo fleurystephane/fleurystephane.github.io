@@ -1,0 +1,20 @@
+!!!5
+%html
+  %head
+    %meta{ :charset=>'utf-8' }
+    %title #{site.name}
+    %meta{ :name=>'viewport', :content=>'width=device-width, initial-scale=1.0' }
+    :css
+      body {
+        padding-top: 60px;
+      }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"/stylesheets/monstyle.css" }
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"/stylesheets/colony.css" }
+    %script{ :src => '/javascripts/jquery.min.js', :type => 'text/javascript', :charset => 'utf-8' }
+    %script{ :src => '/javascripts/bootstrap-dropdown.js', :type => 'text/javascript', :charset => 'utf-8' }
+    /[if lt IE 9]
+      %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
+  %body
+    ~ content
+    :javascript
+      $('#TableOC').append($('#toc-container'));

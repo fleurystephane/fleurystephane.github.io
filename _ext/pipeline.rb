@@ -1,3 +1,5 @@
+require 'font-awesome-sass'
+
 require 'bootstrap-sass'
 
 Awestruct::Extensions::Pipeline.new do

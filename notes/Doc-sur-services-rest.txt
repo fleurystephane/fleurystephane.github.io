@@ -1,0 +1,35 @@
+= Mes questions
+
+== Comment ajouter un interceptor de duration sur une méthode ?
+
+La notion d'Interceptor fait partie de la spéc JSR 318. Elle est intégrée à un serveur Java EE 7 compliant (Wildfly 9 par exemple). +
+La version actuelle de la JSR est la 1.2.
+
+.Quelques rappels sur la création d'une classe intercepteur...
+. Ne doit pas être {abstract}
+. Constructeur vide
+. peut contenir les méthodes suivantes :
+ .. around-invoke
+ .. around-timeout
+ .. lifecycle callback
+. peut hériter d'un autre interceptor
+
+Créer une @Interface avec les annotations suivantes :
+@Qualifier signifie que l'annotation pourra être utilisée pour apporter une précision sur le type d'un bean Java
+@InterceptorBinding signifie ...
+
+== Comment gérer les exceptions en Jax-rs ?
+Il y a 2 façons de gérer les exceptions avec Jax-rs, la 1ère étant la plus simple mais la moins flexible
+
+1. Pour lever une exception de type ressource non trouvée (HTTP 404), il suffit de lever une WebApplicationException(Response.Status.NOT_FOUND).
+
+2. Utiliser javax.ws.rs.ext.ExceptionMapper
+
+
+== Comment annoter la classe point d'entrée des services?
+
+@Stateless ?
+
+@Singleton ?
+
+Juste @Path ?

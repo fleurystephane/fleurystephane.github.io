@@ -1,0 +1,16 @@
+= La home page
+:awestruct-layout: base
+:toc:
+:toc-placement: manual
+:toclevels: 3
+:toc-title: Table des matières
+:icons: font
+
+[#toc-container]
+--
+toc::[]
+--
+
+:leveloffset: 1
+include::../docs/home/home.adoc[]
+

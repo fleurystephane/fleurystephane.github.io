@@ -1,0 +1,77 @@
+
+// Import all the variables into the main css file.
+@import "variables";
+
+// I gather this file is a starting point for the project.
+@import "bootstrap";
+
+// Include responsive Bootstrap styles
+//@import "bootstrap-responsive";
+
+@import "font-awesome";
+
+.hero-unit {
+	padding: 60px;
+	margin-bottom: 30px;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	width: 100%;
+	background: url("../images/natixis.gif") no-repeat bottom right;
+	border: 1px solid #581D74;
+	margin-bottom: -2px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.hero-unit > h2 {
+	color: #581D74;
+}
+.hero-unit > h5 {
+	color: #581D74;
+}
+
+.thumbnail {
+	border: 1px solid #581D74;
+}
+
+
+footer {
+	color: #581D74;
+	height: 40px;
+	background: url("../images/natixis.gif") no-repeat top right;
+}
+
+#TableOC {
+	position: fixed;
+	width: 280px;
+    height: 90%;
+    overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#TableOC ol {
+	list-style-type: none;
+}
+
+.spacerAfterNavbar {
+	margin-top: 70px;
+}
+
+p#titre {
+	font-size: 5em;
+	font-family: Consolas;
+	color: $red;
+}
+
+.titreDePage {
+	font-size: 2.5em;
+	font-family: Consolas;
+	color: $red;
+}
+
+.resumebatch {
+	color: #ba3925;
+	font-style: italic;
+}

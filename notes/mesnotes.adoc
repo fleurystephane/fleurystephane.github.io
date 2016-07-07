@@ -1,0 +1,61 @@
+= Mes questions
+
+== Comment ajouter un interceptor de duration sur une méthode ?
+
+La notion d'Interceptor fait partie de la spéc JSR 318. Elle est intégrée à un serveur Java EE 7 compliant (Wildfly 9 par exemple). +
+La version actuelle de la JSR est la 1.2.
+
+.Quelques rappels sur la création d'une classe intercepteur...
+. Ne doit pas être {abstract}
+. Constructeur vide
+. peut contenir les méthodes suivantes :
+ .. around-invoke
+ .. around-timeout
+ .. lifecycle callback
+. peut hériter d'un autre interceptor
+
+Créer une @Interface avec les annotations suivantes :
+@Qualifier signifie que l'annotation pourra être utilisée pour apporter une précision sur le type d'un bean Java
+@InterceptorBinding signifie ...
+
+== Comment gérer les exceptions en Jax-rs ?
+Il y a 2 façons de gérer les exceptions avec Jax-rs, la 1ère étant la plus simple mais la moins flexible
+
+. Pour générer une exception, il suffit de lever une instance de WebApplicationException (initialisée avec le status correspondant à l'erreur : 404 par exemple).
+. Utiliser javax.ws.rs.ext.ExceptionMapper afin de transformer l'exception levée en HTTP réponse : 
++
+[source,java]
+.Exemple de code expliquant cette solution
+----
+@Provider
+public class ExceptionHttpStatusResolver implements ExceptionMapper<DonneeNonTrouveeException> {
+
+	@Override
+	public Response toResponse(DonneeNonTrouveeException exception) {
+		return Response.status(Response.Status.NOT_FOUND).entity(exception.getMessage()).build();
+	}
+}
+----
+
+L'annotation _@Provider_ permet de déclarer cette classe au sein du moteur Jax-rs comme un composant. +
+En fait, le serveur se charge de scanner toutes les classes et d'ajouter au moteur Jax-rs les classes annotées @Path et @Provider.
+
+A partir de la spéc 3.0 du Servlet Container, il n'est plus nécessaire de déclarer le mapping de servlet/url pour Jax-rs. Ceci est dû au fait que Jax-rs fait partie de la norme Java EE 7 et donc que le server embarque nécessairement son implémentation. Donc inutile de spécifier quelle implémentation utiliser.
+
+== Comment utiliser un cache HTTP ?
+
+L'objectif est d'éviter de requêter la base systématiquement pour chaque requête HTTP.
+
+J'utilise pour cela la notion d'EntityTag *ETag* du protocole HTTP. Cet attribut contient une valeur qui sera envoyée au serveur afin d'indiquer à ce dernier s'il doit ou non réeffectuer les requêtes en base ou non.
+
+J'ai décidé de mettre en place un @Singleton contenant une _String_. cet attribut sera mis à jour à chaque modification de la base de données.
+
+== Comment annoter la classe point d'entrée des services?
+
+@Stateless ?
+
+@Singleton ?
+
+Juste @Path ?
+
+== Et si on faisait un peu de cache?
